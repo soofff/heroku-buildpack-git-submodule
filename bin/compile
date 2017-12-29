@@ -48,9 +48,12 @@ for i in "${ADDR[@]}"; do
     echo "IdentityFile $key" >> ~/.ssh/config
     ((index++))
 done
-ls -la ~/.ssh
+
+echo "## id_rsa0"
 cat ~/.ssh/id_rsa0
+echo "## id_rsa1"
 cat ~/.ssh/id_rsa1
+echo "## id_rsa2"
 cat ~/.ssh/id_rsa2
 
 # ignore/hide ssh warnings
@@ -59,7 +62,10 @@ echo "   StrictHostKeyChecking no" >> ~/.ssh/config
 echo "   UserKnownHostsFile /dev/null" >> ~/.ssh/config
 echo "   LogLevel ERROR" >> ~/.ssh/config
 echo "-----> Installed SSH key from GIT_SSH_KEY"
+echo "## config"
+cat ~/.ssh/config
 
+ls -la ~/.ssh
 # checkout the revision that's being deployed
 git fetch -q --depth 1 origin -a > /dev/null
 git checkout -q ${SOURCE_VERSION:-master} > /dev/null
