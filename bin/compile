@@ -48,6 +48,8 @@ for i in "${ADDR[@]}"; do
     echo "IdentityFile $key" >> ~/.ssh/config
     ((index++))
 done
+ls -la ~/.ssh
+cat ~/.ssh/*
 
 # ignore/hide ssh warnings
 echo "Host *" >> ~/.ssh/config
