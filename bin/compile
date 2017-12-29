@@ -39,6 +39,16 @@ mkdir ~/.ssh
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
 cat "$ENV_DIR/GIT_SSH_KEY" > ~/.ssh/id_rsa
 
+# use multiple keys splitted by |
+IFS='|' read -ra ADDR <<< $(cat "$ENV_DIR/GIT_SSH_KEY")
+index=0
+for i in "${ADDR[@]}"; do
+    key="~/.ssh/id_rsa$index"
+    echo $i > $key
+    echo "IdentityFile $key" >> ~/.ssh/config
+    ((index++))
+done
+
 # ignore/hide ssh warnings
 echo "Host *" >> ~/.ssh/config
 echo "   StrictHostKeyChecking no" >> ~/.ssh/config
