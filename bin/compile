@@ -49,7 +49,9 @@ for i in "${ADDR[@]}"; do
     ((index++))
 done
 ls -la ~/.ssh
-cat ~/.ssh/*
+cat ~/.ssh/id_rsa0
+cat ~/.ssh/id_rsa1
+cat ~/.ssh/id_rsa2
 
 # ignore/hide ssh warnings
 echo "Host *" >> ~/.ssh/config
