@@ -43,7 +43,7 @@ cat "$ENV_DIR/GIT_SSH_KEY" > ~/.ssh/id_rsa
 IFS='|' read -ra ADDR <<< $(cat "$ENV_DIR/GIT_SSH_KEY")
 index=0
 for i in "${ADDR[@]}"; do
-    key="~/.ssh/id_rsa$index"
+    key=~/.ssh/id_rsa$index
     echo $i > $key
     echo "IdentityFile $key" >> ~/.ssh/config
     ((index++))
